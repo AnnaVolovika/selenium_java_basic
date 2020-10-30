@@ -7,30 +7,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Sample1 {
-    static String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
+    static String libWithDriversLocation = System.getProperty("user.dir") + "/lib/";
 
     @Test
     public void goToHomepage() throws Exception {
         //define driver
-        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
         WebDriver driver = new ChromeDriver();
 
         //open test homepage
         driver.get("https://google.com");
-      //  driver.get("https://kristinek.github.io/site/");
+        driver.get("https://kristinek.github.io/site/");
+        System.out.println(driver.findElement(By.id("h1")).getText());
+        //get title of page
+        System.out.println(driver.getTitle());
 
-        driver.findElement(By.xpath("//input[@aria-label = `Search`]")).sendKeys("some text");
-        driver.findElement(By.xpath("//input[@type = `submit`]")).click();
+        //get URL of current page
+        System.out.println(driver.getCurrentUrl());
 
-//        System.out.println(driver.findElement(By.id("h1")).getText());
-//        //get title of page
-//        System.out.println(driver.getTitle());
-//
-//        //get URL of current page
-//        System.out.println(driver.getCurrentUrl());
-//
-//        //Sleep for 10 seconds
-//        Thread.sleep(10000);
+        //Sleep for 10 seconds
+        Thread.sleep(10000);
 
         //Close browser
         driver.quit();

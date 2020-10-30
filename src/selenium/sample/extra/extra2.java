@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class extra2 {
     WebDriver driver;
-    String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
+    String libWithDriversLocation = System.getProperty("user.dir") + "/lib/";
 
     public void pageCheck() throws Exception {
         driver.get("https://kristinek.github.io/site/examples/styles");

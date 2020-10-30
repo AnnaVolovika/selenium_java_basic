@@ -17,26 +17,23 @@ public class Sample2 {
     @Before
     public void startingTests() throws Exception {
         // from Sample 1:
-        String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
-        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
+        String libWithDriversLocation = System.getProperty("user.dir") + "/lib/";
+        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
         // declaration above:
         driver = new ChromeDriver();
 
         //open page:
         driver.get("https://kristinek.github.io/site/examples/locators");
-        System.out.println("---------START--------------");
     }
 
     // method which is being run after each test
     @After
     public void endingTests() throws Exception {
-        System.out.println("--------THE-END----------");
         driver.quit();
     }
 
     @Test
     public void findElementByID() throws Exception {
-        System.out.println("--------1----------");
         // works:
         System.out.println(driver.findElement(By.id("heading_1")).getText());
         // will fail with error NoSuchElementException
@@ -47,7 +44,6 @@ public class Sample2 {
 
     @Test
     public void findElementByName() throws Exception {
-        System.out.println("--------2----------");
         // From page:
         // <input type="button" value="This is a button" name="randomButton" />
         System.out.println(driver.findElement(By.name("randomButton1")).getAttribute("value")); // "This is a button"
@@ -55,31 +51,30 @@ public class Sample2 {
         System.out.println(driver.findElement(By.name("randomButton1")).getAttribute("name")); // "randomButton"
         System.out.println(driver.findElement(By.name("randomButton1")).getAttribute("id")); // empty
         // Unable to locate element: {"method":"name","selector":"randomButton123"}:
-        //System.out.println(driver.findElement(By.name("randomButton123")).getAttribute("value"));
+//        System.out.println(driver.findElement(By.name("randomButton123")).getAttribute("value"));
     }
 
     @Test
     public void findElementByClassFirst() throws Exception {
-        System.out.println("--------3----------");
         System.out.println(driver.findElement(By.className("text")).getText()); // "sample text 1"
     }
 
     @Test
     public void findElementByClassAll() throws Exception {
-        System.out.println("--------4----------");
         System.out.println(driver.findElements(By.id("headingasdga")).size()); // 0
         System.out.println(driver.findElements(By.className("text")).size()); // 5
-        List<WebElement> allElementsWithClass = driver.findElements(By.className("text"));
+    List<WebElement> allElementsWithClass = driver.findElements(By.className("text"));
 //
         for (WebElement elementWithClass : allElementsWithClass) {
-            System.out.println(elementWithClass.getText());
-            //            sample text 1
-            //            sample text 2
-            //            unbelievable sample text
-            //            amazing sample text
-            //            dummy text
-        }
-        System.out.println(driver.findElements(By.className("text")).get(0).getText());
-        System.out.println(driver.findElements(By.className("text")).get(1).getText()); // "unbelievable sample text"
+        System.out.println(elementWithClass.getText());
+        //            sample text 1
+        //            sample text 2
+        //            unbelievable sample text
+        //            amazing sample text
+        //            dummy text
     }
+        System.out.println("-----------------------");
+        System.out.println(driver.findElements(By.className("text")).get(0).getText());
+        System.out.println(driver.findElements(By.className("text")).get(2).getText()); // "unbelievable sample text"
+}
 }

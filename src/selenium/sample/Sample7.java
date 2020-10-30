@@ -23,8 +23,8 @@ public class Sample7 {
     @Before
     public void startingTests() throws Exception {
         // from Sample 1:
-        String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
-        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
+        String libWithDriversLocation = System.getProperty("user.dir") + "/lib/";
+        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
         // declaration above:
         driver = new ChromeDriver();
 
@@ -41,6 +41,7 @@ public class Sample7 {
     @Test
     public void selectCheckBox() throws Exception {
         List<WebElement> checkBoxes = driver.findElements(By.cssSelector(".w3-check[type='checkbox']"));
+
 
         for (WebElement checkBox : checkBoxes) {
             assertFalse(checkBox.isSelected()); // checkboxes are NOT selected

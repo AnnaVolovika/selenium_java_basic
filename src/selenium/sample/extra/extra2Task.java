@@ -10,7 +10,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class extra2Task {
     WebDriver driver;
-    String libWithDriversLocation = System.getProperty("user.dir") + "\\lib\\";
+    String libWithDriversLocation = System.getProperty("user.dir") + "/lib/";
 
     @After
     public void endingTests() throws Exception {
@@ -28,7 +28,7 @@ public class extra2Task {
 
     @Test
     public void runningOnChrome() throws Exception {
-        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", libWithDriversLocation + "chromedriver");
         driver = new ChromeDriver();
 //        TODO
 //        go to page https://kristinek.github.io/site/examples/po
